@@ -74,10 +74,10 @@ const noDecimals = Math.trunc;
 
 // NATIONAL INSURANCE DATA
 
-const oneG = 118620 // Basic calculation income
+const oneG = 118620 // Base calculation income
 const maxIncomeFullPension = oneG * 7.1 // Maximum income for full pension
-const maxIncomeFullBenefits = oneG * 6 // No benefit for income above this numer
-const minIncomeForBenefits = oneG * 0.75 // Minimum income for receiveing befenits
+const maxIncomeFullBenefits = oneG * 6 // No benefit for income above this number
+const minIncomeForBenefits = oneG * 0.75 // Minimum income for receiveing benefits
 const myIncome = maxIncomeFullPension; // Max sum taken as income
 
 console.log(oneG, maxIncomeFullPension, maxIncomeFullBenefits, minIncomeForBenefits, myIncome);
@@ -88,7 +88,7 @@ const weeks = 52;
 const days = 260;
 const hours = 1950;
 
-const brokenDownIncome = {
+const myIncomeBrokenDown = {
     monthly() {
         return noDecimals(myIncome / months); 
     },
@@ -106,10 +106,10 @@ const brokenDownIncome = {
     },
 };
 
-let monthlyIncome = brokenDownIncome.monthly();
-let weeklyIncome = brokenDownIncome.weekly();
-let dailyIncome = brokenDownIncome.daily();
-let hourlyIncome = brokenDownIncome.hourly();
+let monthlyIncome = myIncomeBrokenDown.monthly();
+let weeklyIncome = myIncomeBrokenDown.weekly();
+let dailyIncome = myIncomeBrokenDown.daily();
+let hourlyIncome = myIncomeBrokenDown.hourly();
 
 console.log(monthlyIncome, weeklyIncome, dailyIncome, hourlyIncome);
 
@@ -122,6 +122,79 @@ let vacationDaysAllowedWithPay = 26;
 let vacationPay = () => noDecimals(monthlyIncome + (myIncome * vacationPayPercentOfIncome) - (monthlyIncome / vacationDaysAllowedWithPay) * vacationDaysAllowed);
 
 console.log(vacationPay());
+
+// INCOME TAX
+
+const deductions = {
+    minimum: 109950,
+    individual: 58250
+};
+const totalDeductions = deductions.minimum + deductions.individual;
+
+const tax = {
+    income: 0.22,
+    nationalInsurance: 0.08
+};
+
+const bracketTax = {
+    
+    taxedSum() {
+        return noDecimals((high - low) * tax);
+    },
+
+    stepOne: {
+        low: 198350,
+        high: 279150,
+        tax: 0.017,
+
+        taxedSum() {
+            return noDecimals((this.high - this.low) * this.tax);
+        },
+    },
+
+    stepTwo: {
+        low: 279150,
+        high: 642590,
+        tax: 0.04,
+
+        taxedSum() {
+            return noDecimals((this.high - this.low) * this.tax);
+        },
+    },
+
+    stepThree: {
+        low: 642590,
+        high: 926800,
+        tax: 0.134,
+
+        taxedSum() {
+            return noDecimals((this.high - this.low) * this.tax);
+        },
+    },
+
+    stepFour: {
+        low: 926800,
+        high: 1500000,
+        tax: 0.164,
+
+        taxedSum() {
+            return noDecimals((this.high - this.low) * this.tax);
+        },
+    },
+
+    stepFive: {
+        low: 1500000,
+        high: Infinity,
+        tax: 0.174,
+
+        taxedSum() {
+            return noDecimals((this.high - this.low) * this.tax);
+        },
+    },
+};
+
+console.log(bracketTax.stepOne.taxedSum());
+
 
 
 
