@@ -89,33 +89,43 @@ const days = 260;
 const hours = 1950;
 
 const brokenDownIncome = {
-    monthlyIncome() {
+    monthly() {
         return noDecimals(myIncome / months); 
     },
 
-    weeklyIncome() {
+    weekly() {
         return noDecimals(myIncome / weeks);
     },
 
-    dailyIncome() {
+    daily() {
         return noDecimals(myIncome / days);
     },
 
-    hourlyIncome() {
+    hourly() {
         return noDecimals(myIncome / hours);
     },
 };
-console.log(brokenDownIncome.monthlyIncome(), brokenDownIncome.weeklyIncome(), brokenDownIncome.dailyIncome(), brokenDownIncome.hourlyIncome());
+
+let monthlyIncome = brokenDownIncome.monthly();
+let weeklyIncome = brokenDownIncome.weekly();
+let dailyIncome = brokenDownIncome.daily();
+let hourlyIncome = brokenDownIncome.hourly();
+
+console.log(monthlyIncome, weeklyIncome, dailyIncome, hourlyIncome);
 
 // VACATION PAY
 
-let vacationPayPercentOfIncome = 12;
+let vacationPayPercentOfIncome = 0.12;
 let vacationDaysAllowed = 30;
 let vacationDaysAllowedWithPay = 26;
 
-let vacationPay = (monthlyIncome, myIncome, vacationPayPercentOfIncome, vacationDaysAllowedWithPay, vacationDaysAllowed) => monthlyIncome + (myIncome * vacationPayPercentOfIncome) - (monthlyIncome / vacationDaysAllowedWithPay) * vacationDaysAllowed;
+let vacationPay = () => noDecimals(monthlyIncome + (myIncome * vacationPayPercentOfIncome) - (monthlyIncome / vacationDaysAllowedWithPay) * vacationDaysAllowed);
 
 console.log(vacationPay());
+
+
+
+
 
 
 
