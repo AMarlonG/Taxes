@@ -159,12 +159,11 @@ for (const brackets of allTaxBrackets) {
     if (myIncome < brackets[1]) {
         totalBracketTaxes += (myIncome - brackets[0]) * brackets[2];
         break;
-        
     }
     else {
         totalBracketTaxes += (brackets[1] - brackets[0]) * brackets[2];
-    }
-}
+    };
+};
 
 console.log(totalBracketTaxes);
 
