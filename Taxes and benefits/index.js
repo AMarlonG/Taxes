@@ -121,7 +121,7 @@ let vacationDaysAllowedWithPay = 26;
 
 let vacationPay = () => noDecimals(monthlyIncome + (myIncome * vacationPayPercentOfIncome) - (monthlyIncome / vacationDaysAllowedWithPay) * vacationDaysAllowed);
 
-console.log(vacationPay());
+// console.log(vacationPay());
 
 // INCOME TAX
 
