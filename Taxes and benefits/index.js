@@ -138,7 +138,14 @@ console.log('My income after deductions: ' + myIncomeAfterDeductions);
 
 const tax = {
     income: 0.22,
+    income() {
+        return myIncomeAfterDeductions * this.income;
+    },
+
     nationalInsurance: 0.08,
+    income() {
+        return myIncomeAfterDeductions * this.nationalInsurance;
+    },
     
     bracket: {
         stepOne: {
