@@ -145,6 +145,7 @@ const tax = {
 
 console.log(tax.nationalInsurance());
 
+// Tax bracket calculations taken from: https://stackoverflow.com/questions/63231845/how-to-calculate-effective-tax-rate-in-javascript/76447211#76447211
 const allTaxBrackets = [
     [198350, 279150, 0.017],
     [279150, 642590, 0.04],
