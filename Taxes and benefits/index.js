@@ -140,7 +140,6 @@ const tax = {
     nationalInsurance: 0.08,
     
     bracket: {
-
         stepOne: {
             low: 198350,
             high: 279150,
@@ -149,7 +148,6 @@ const tax = {
                 return noDecimals((this.high - this.low) * this.tax);
                 },
         },
-
         stepTwo: {
             low: 279150,
             high: 642590,
@@ -158,7 +156,6 @@ const tax = {
                 return noDecimals((this.high - this.low) * this.tax);
                 },
         },
-
         stepThree: {
             low: 642590,
             high: 926800,
@@ -167,7 +164,6 @@ const tax = {
                     return noDecimals((this.high - this.low) * this.tax);
                 },
         },
-
         stepFour: {
             low: 926800,
             high: 1500000,
@@ -176,7 +172,6 @@ const tax = {
                 return noDecimals((this.high - this.low) * this.tax);
             },
         },
-
         stepFive: {
             low: 1500000,
             high: Infinity,
@@ -188,13 +183,6 @@ const tax = {
     }
 };
 
-
-
-// console.log(bracketTax.stepOne.taxedSum());
-// console.log(bracketTax.stepTwo.taxedSum());
-// console.log(bracketTax.stepThree.taxedSum());
-// console.log(bracketTax.stepFour.taxedSum());
-// console.log(bracketTax.stepFive.taxedSum());
 
 
 
