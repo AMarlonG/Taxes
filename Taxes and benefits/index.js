@@ -137,66 +137,58 @@ console.log(myIncomeAfterDeductions);
 
 const tax = {
     income: 0.22,
-    nationalInsurance: 0.08,  
-};
-
-const bracketTax = {
+    nationalInsurance: 0.08,
     
-    // Can the formula be moved outside the objects
-    // taxedSum() {
-    //     return noDecimals((high - low) * tax);
-    // },
+    bracket: {
 
-    stepOne: {
-        low: 198350,
-        high: 279150,
-        tax: 0.017,
-
-        taxedSum() {
-            return noDecimals((this.high - this.low) * this.tax);
+        stepOne: {
+            low: 198350,
+            high: 279150,
+            tax: 0.017,
+            taxedSum() {
+                return noDecimals((this.high - this.low) * this.tax);
+                },
         },
-    },
 
-    stepTwo: {
-        low: 279150,
-        high: 642590,
-        tax: 0.04,
-
-        taxedSum() {
-            return noDecimals((this.high - this.low) * this.tax);
+        stepTwo: {
+            low: 279150,
+            high: 642590,
+            tax: 0.04,
+            taxedSum() {
+                return noDecimals((this.high - this.low) * this.tax);
+                },
         },
-    },
 
-    stepThree: {
-        low: 642590,
-        high: 926800,
-        tax: 0.134,
-
-        taxedSum() {
-            return noDecimals((this.high - this.low) * this.tax);
+        stepThree: {
+            low: 642590,
+            high: 926800,
+            tax: 0.134,
+            taxedSum() {
+                    return noDecimals((this.high - this.low) * this.tax);
+                },
         },
-    },
 
-    stepFour: {
-        low: 926800,
-        high: 1500000,
-        tax: 0.164,
-
-        taxedSum() {
-            return noDecimals((this.high - this.low) * this.tax);
+        stepFour: {
+            low: 926800,
+            high: 1500000,
+            tax: 0.164,
+            taxedSum() {
+                return noDecimals((this.high - this.low) * this.tax);
+            },
         },
-    },
 
-    stepFive: {
-        low: 1500000,
-        high: Infinity,
-        tax: 0.174,
-
-        taxedSum() {
-            return noDecimals((this.high - this.low) * this.tax);
+        stepFive: {
+            low: 1500000,
+            high: Infinity,
+            tax: 0.174,
+            taxedSum() {
+                return noDecimals((this.high - this.low) * this.tax);
+            },
         },
-    },
+    }
 };
+
+
 
 // console.log(bracketTax.stepOne.taxedSum());
 // console.log(bracketTax.stepTwo.taxedSum());
