@@ -139,7 +139,7 @@ const tax = {
 
     nationalInsurance: 0.08,
     nationalInsurance() {
-        return myIncomeAfterTaxDeductions * this.nationalInsurance;
+        return myIncome * this.nationalInsurance;
     },
 };
 
@@ -156,8 +156,8 @@ const allTaxBrackets = [
 
 let totalBracketTaxes = 0;
 for (const brackets of allTaxBrackets) {
-    if (myIncomeAfterTaxDeductions < brackets[1]) {
-        totalBracketTaxes += (myIncomeAfterTaxDeductions - brackets[0]) * brackets[2];
+    if (myIncome < brackets[1]) {
+        totalBracketTaxes += (myIncome - brackets[0]) * brackets[2];
         break;
         
     }
