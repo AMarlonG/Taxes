@@ -79,8 +79,6 @@ const maxIncomeFullPension = oneG * 7.1 // Maximum income for full pension
 const maxIncomeFullBenefits = oneG * 6 // No benefit for income above this number
 const minIncomeForBenefits = oneG * 0.75 // Minimum income for receiveing benefits
 const myIncome = maxIncomeFullPension; // Max sum taken as income
-
-
 console.log('My income: ' + myIncome);
 
 const myIncomeBrokenDown = {
@@ -111,40 +109,37 @@ let weeklyIncome = myIncomeBrokenDown.weekly();
 let dailyIncome = myIncomeBrokenDown.daily();
 let hourlyIncome = myIncomeBrokenDown.hourly();
 
-// console.log('My income broken down in months, weeks, days, and hours: ');
-// console.log(monthlyIncome, weeklyIncome, dailyIncome, hourlyIncome);
+const vacation = {
+    percentOfIncome: 0.12,
+    daysAllowed: 30,
+    daysWithPay: 26,
 
-// VACATION PAY
+    payment() {
+        return noDecimals(monthlyIncome + (myIncome * this.percentOfIncome) - (monthlyIncome / this.daysWithPay) * this.daysAllowed)
+    }
+};
+const vacationPayment = vacation.payment();
+console.log('My vacation pay: ' + vacationPayment);
 
-let vacationPayPercentOfIncome = 0.12;
-let vacationDaysAllowed = 30;
-let vacationDaysAllowedWithPay = 26;
-
-let vacationPay = () => noDecimals(monthlyIncome + (myIncome * vacationPayPercentOfIncome) - (monthlyIncome / vacationDaysAllowedWithPay) * vacationDaysAllowed);
-
-console.log('My vacation pay: ' + vacationPay());
-
-// TAXES
-
-const deductions = {
+const taxDeductions = {
     minimum: 109950,
     individual: 58250
 };
-const totalDeductions = deductions.minimum + deductions.individual;
-console.log('My total deductions: ' + totalDeductions);
+const totalTaxDeductions = taxDeductions.minimum + taxDeductions.individual;
+console.log('My total deductions: ' + totalTaxDeductions);
 
-const myIncomeAfterDeductions = myIncome - totalDeductions;
-console.log('My income after deductions: ' + myIncomeAfterDeductions);
+const myIncomeAfterTaxDeductions = myIncome - totalTaxDeductions;
+console.log('My income after deductions: ' + myIncomeAfterTaxDeductions);
 
 const tax = {
     income: 0.22,
     income() {
-        return myIncomeAfterDeductions * this.income;
+        return myIncomeAfterTaxDeductions * this.income;
     },
 
     nationalInsurance: 0.08,
     income() {
-        return myIncomeAfterDeductions * this.nationalInsurance;
+        return myIncomeAfterTaxDeductions * this.nationalInsurance;
     },
     
     bracket: {
@@ -192,6 +187,11 @@ const tax = {
 };
 
 
+function taxBracketstepOne() {
+    if (myIncome > tax.bracket.stepOne.low && myIncome === tax.bracket.stepOne.low) {
+        result = tax.bracket.stepOne.taxedSum
+    }
+} 
 
 
 
