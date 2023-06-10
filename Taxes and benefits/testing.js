@@ -27,4 +27,15 @@ const stepThree = taxBracket(642590, 926800, 0.134);
 const stepFour = taxBracket(926800, 1500000, 0.164);
 const stepFive = taxBracket(1500000, Infinity, 0.174);
 
-
+[stepOne, stepTwo, stepThree, stepFour, stepFive].forEach((elm) => {
+    console.log(elm);
+    if (myIncome > elm.low && myIncome === elm.high) {
+        return elm.sum();
+    }
+    if (myIncome > elm.low && myIncome < elm.high) {
+        return (myIncome - elm.low) * elm.tax;
+    }
+    if (myIncome < elm.low) {
+        return 'Income is to low for bracket';
+    }
+});
