@@ -80,7 +80,7 @@ const maxIncomeFullBenefits = oneG * 6 // No benefit for income above this numbe
 const minIncomeForBenefits = oneG * 0.75 // Minimum income for receiveing benefits
 const myIncome = maxIncomeFullPension; // Max sum taken as income
 
-console.log(oneG, maxIncomeFullPension, maxIncomeFullBenefits, minIncomeForBenefits, myIncome);
+console.log(myIncome);
 
 // A labour year broken down
 const months = 12;
@@ -111,7 +111,7 @@ let weeklyIncome = myIncomeBrokenDown.weekly();
 let dailyIncome = myIncomeBrokenDown.daily();
 let hourlyIncome = myIncomeBrokenDown.hourly();
 
-console.log(monthlyIncome, weeklyIncome, dailyIncome, hourlyIncome);
+// console.log(monthlyIncome, weeklyIncome, dailyIncome, hourlyIncome);
 
 // VACATION PAY
 
@@ -130,17 +130,22 @@ const deductions = {
     individual: 58250
 };
 const totalDeductions = deductions.minimum + deductions.individual;
+console.log(totalDeductions);
+
+const myIncomeAfterDeductions = myIncome - totalDeductions;
+console.log(myIncomeAfterDeductions);
 
 const tax = {
     income: 0.22,
-    nationalInsurance: 0.08
+    nationalInsurance: 0.08,  
 };
 
 const bracketTax = {
     
-    taxedSum() {
-        return noDecimals((high - low) * tax);
-    },
+    // Can the formula be moved outside the objects
+    // taxedSum() {
+    //     return noDecimals((high - low) * tax);
+    // },
 
     stepOne: {
         low: 198350,
@@ -193,9 +198,11 @@ const bracketTax = {
     },
 };
 
-console.log(bracketTax.stepOne.taxedSum());
-
-
+// console.log(bracketTax.stepOne.taxedSum());
+// console.log(bracketTax.stepTwo.taxedSum());
+// console.log(bracketTax.stepThree.taxedSum());
+// console.log(bracketTax.stepFour.taxedSum());
+// console.log(bracketTax.stepFive.taxedSum());
 
 
 
