@@ -15,7 +15,6 @@ const taxBracket = (low, high, tax) => {
             return (this.high - this.low) * this.tax;
         }
     }
-
 };
 
 const steps = {
