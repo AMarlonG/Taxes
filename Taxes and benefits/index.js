@@ -138,60 +138,37 @@ const tax = {
     },
 
     nationalInsurance: 0.08,
-    income() {
+    nationalInsurance() {
         return myIncomeAfterTaxDeductions * this.nationalInsurance;
     },
-    
-    bracket: {
-        stepOne: {
-            low: 198350,
-            high: 279150,
-            tax: 0.017,
-            taxedSum() {
-                return noDecimals((this.high - this.low) * this.tax);
-                },
-        },
-        stepTwo: {
-            low: 279150,
-            high: 642590,
-            tax: 0.04,
-            taxedSum() {
-                return noDecimals((this.high - this.low) * this.tax);
-                },
-        },
-        stepThree: {
-            low: 642590,
-            high: 926800,
-            tax: 0.134,
-            taxedSum() {
-                    return noDecimals((this.high - this.low) * this.tax);
-                },
-        },
-        stepFour: {
-            low: 926800,
-            high: 1500000,
-            tax: 0.164,
-            taxedSum() {
-                return noDecimals((this.high - this.low) * this.tax);
-            },
-        },
-        stepFive: {
-            low: 1500000,
-            high: Infinity,
-            tax: 0.174,
-            taxedSum() {
-                return noDecimals((this.high - this.low) * this.tax);
-            },
-        },
-    }
 };
 
+console.log(tax.nationalInsurance());
 
-function taxBracketstepOne() {
-    if (myIncome > tax.bracket.stepOne.low && myIncome === tax.bracket.stepOne.low) {
-        result = tax.bracket.stepOne.taxedSum
+const allTaxBrackets = [
+    [198350, 279150, 0.017],
+    [279150, 642590, 0.04],
+    [642590, 926800, 0.134],
+    [926800, 1500000, 0.164],
+    [1500000, Infinity, 0.174],
+];
+
+let totalBracketTaxes = 0;
+for (const brackets of allTaxBrackets) {
+    if (myIncomeAfterTaxDeductions < brackets[1]) {
+        totalBracketTaxes += (myIncomeAfterTaxDeductions - brackets[0]) * brackets[2];
+        break;
+        
     }
-} 
+    else {
+        totalBracketTaxes += (brackets[1] - brackets[0]) * brackets[2];
+    }
+}
+
+console.log(totalBracketTaxes);
+
+
+
 
 
 
