@@ -80,29 +80,29 @@ const maxIncomeFullBenefits = oneG * 6 // No benefit for income above this numbe
 const minIncomeForBenefits = oneG * 0.75 // Minimum income for receiveing benefits
 const myIncome = maxIncomeFullPension; // Max sum taken as income
 
-console.log(myIncome);
 
-// A labour year broken down
-const months = 12;
-const weeks = 52;
-const days = 260;
-const hours = 1950;
+console.log('My income: ' + myIncome);
 
 const myIncomeBrokenDown = {
+
+    months: 12,
     monthly() {
-        return noDecimals(myIncome / months); 
+        return noDecimals(myIncome / this.months); 
     },
 
+    weeks: 52,
     weekly() {
-        return noDecimals(myIncome / weeks);
+        return noDecimals(myIncome / this.weeks);
     },
 
+    days: 260,
     daily() {
-        return noDecimals(myIncome / days);
+        return noDecimals(myIncome / this.days);
     },
 
+    hours: 1950,
     hourly() {
-        return noDecimals(myIncome / hours);
+        return noDecimals(myIncome / this.hours);
     },
 };
 
@@ -111,6 +111,7 @@ let weeklyIncome = myIncomeBrokenDown.weekly();
 let dailyIncome = myIncomeBrokenDown.daily();
 let hourlyIncome = myIncomeBrokenDown.hourly();
 
+// console.log('My income broken down in months, weeks, days, and hours: ');
 // console.log(monthlyIncome, weeklyIncome, dailyIncome, hourlyIncome);
 
 // VACATION PAY
@@ -121,7 +122,7 @@ let vacationDaysAllowedWithPay = 26;
 
 let vacationPay = () => noDecimals(monthlyIncome + (myIncome * vacationPayPercentOfIncome) - (monthlyIncome / vacationDaysAllowedWithPay) * vacationDaysAllowed);
 
-// console.log(vacationPay());
+console.log('My vacation pay: ' + vacationPay());
 
 // TAXES
 
@@ -130,10 +131,10 @@ const deductions = {
     individual: 58250
 };
 const totalDeductions = deductions.minimum + deductions.individual;
-console.log(totalDeductions);
+console.log('My total deductions: ' + totalDeductions);
 
 const myIncomeAfterDeductions = myIncome - totalDeductions;
-console.log(myIncomeAfterDeductions);
+console.log('My income after deductions: ' + myIncomeAfterDeductions);
 
 const tax = {
     income: 0.22,
