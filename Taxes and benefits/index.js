@@ -123,7 +123,7 @@ let vacationPay = () => noDecimals(monthlyIncome + (myIncome * vacationPayPercen
 
 // console.log(vacationPay());
 
-// INCOME TAX
+// TAXES
 
 const deductions = {
     minimum: 109950,
