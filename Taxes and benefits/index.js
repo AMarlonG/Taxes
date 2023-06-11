@@ -63,16 +63,12 @@ console.log('Income after deductions: ' + myIncomeAfterTaxDeductions);
 
 // Income tax (net income)
 const incomeTaxPercent = 0.22;
-incomeTax = () => {
-    return noDecimals(myIncomeAfterTaxDeductions * incomeTaxPercent);
-};
+incomeTax = () => noDecimals(myIncomeAfterTaxDeductions * incomeTaxPercent); 
 console.log('Income tax: ' + incomeTax());
 
 // National insurance tax (gross income)
 const nationalInsuranceTaxPercent = 0.08;
-nationalInsuranceTax = () => {
-    return noDecimals(myIncome * nationalInsuranceTaxPercent);
-};
+nationalInsuranceTax = () => noDecimals(myIncome * nationalInsuranceTaxPercent);
 console.log('National insurance tax: ' + nationalInsuranceTax());
 
 // Bracket tax (gross income)
