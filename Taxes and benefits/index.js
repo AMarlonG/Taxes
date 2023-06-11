@@ -1,74 +1,4 @@
-/*
-This is a basic calculator project build with JS.
-First I build three basic calculators, then I build a calculator for Norwegian income tax and benefits
-*/
 
-// -------------------------------------------------------
-// BASIC CALCULATOR 1 – ALL FUNCTIONS
-
-// let number1 = 5;
-// let number2 = 6;
-
-// adding = (number1, number2) => {
-//     return number1 + number2
-// };
-
-// subtracting = (number1, number2) => {
-//     return number1 - number2
-// };
-
-// multiplying = (number1, number2) => {
-//     return number1 * number2
-// };
-
-// dividing = (number1, number2) => {
-//     return number1 / number2
-// };
-
-// console.log(adding(number1, number2));
-// console.log(subtracting(number1, number2));
-// console.log(multiplying(number1, number2));
-// console.log(dividing(number1, number2));
-
-
-// -------------------------------------------------------
-// BASIC CALCULATOR 2 – OBJECT WITH METHODS
-
-// let number3 = 8;
-// let number4 = 6;
-
-// const calculations = {
-//     adding(number1, number2) {
-//         return number3 + number4;
-//     },
-
-//     subtracting(number1, number2) {
-//         return number3 - number4;
-//     },
-
-//     multiplying(number1, number2) {
-//         return number3 * number4;
-//     },
-
-//     dividing(number1, number2) {
-//         return number3 / number4;
-//     },
-
-// };
-
-// console.log(calculations.adding(number3, number4));
-// console.log(calculations.subtracting(number3, number4));
-// console.log(calculations.multiplying(number3, number4));
-// console.log(calculations.dividing(number3, number4));
-
-
-// -------------------------------------------------------
-// BASIC CALCULATOR 3 – MULITPLE OPERATIONS IN ONE CALC
-// TBC ...........
-
-// -------------------------------------------------------
-// CALCULATOR FOR NORWEGIAN TAXES AND BENEFITS
-// -------------------------------------------------------
 
 const noDecimals = Math.trunc;
 
@@ -145,7 +75,7 @@ nationalInsuranceTax = () => {
 };
 console.log('National insurance tax: ' + nationalInsuranceTax());
 
-// Backet tax (gross income)
+// Bracket tax (gross income)
 // Calculations used https://stackoverflow.com/questions/63231845/how-to-calculate-effective-tax-rate-in-javascript/76447211#76447211
 const allTaxBrackets = [
     [198350, 279150, 0.017],
@@ -171,13 +101,15 @@ console.log('Bracket tax: ' + totalBracketTaxes);
 const allTaxesTotal = incomeTax() + nationalInsuranceTax() + totalBracketTaxes;
 console.log('Total taxes paid: ' + allTaxesTotal);
 
+// Tax percent
+const finalTaxPercentOfGrossIncome = noDecimals((allTaxesTotal * 100) / myIncome);
+console.log('Tax percent of gross income: ' + finalTaxPercentOfGrossIncome);
+
 // Net income
 const myNetIncome = myIncome - allTaxesTotal;
 console.log('Net income: ' + myNetIncome);
 
-// Tax percent
-const finalTaxPercentOfGrossIncome = noDecimals((allTaxesTotal * 100) / myIncome);
-console.log('Tax percent of gross income: ' + finalTaxPercentOfGrossIncome);
+
 
 
 

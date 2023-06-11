@@ -1,67 +1,73 @@
+/*
+This is a basic calculator project build with JS.
+First I build three basic calculators, then I build a calculator for Norwegian income tax and benefits
+*/
 
+// -------------------------------------------------------
+// BASIC CALCULATOR 1 – ALL FUNCTIONS
 
+// let number1 = 5;
+// let number2 = 6;
 
-
-
-const myIncome = 650000;
-
-// First method – bracket specific sum
-// const taxBracket = (low, high, tax) => {
-//     return {
-//         low,
-//         high,
-//         tax,
-//         sum() {
-//             return (this.high - this.low) * this.tax;
-//         }
-//     }
+// adding = (number1, number2) => {
+//     return number1 + number2
 // };
 
-// const steps = {
-//     stepOne: taxBracket(198350, 279150, 0.017),
-//     stepTwo: taxBracket(279150, 642590, 0.04),
-//     stepThree: taxBracket(642590, 926800, 0.134),
-//     stepFour: taxBracket(926800, 1500000, 0.164),
-//     stepFive: taxBracket(1500000, Infinity, 0.174),
+// subtracting = (number1, number2) => {
+//     return number1 - number2
 // };
 
-// for (key in steps) {
-//     const elm = steps[key];
-//     console.log(
-//         key +
-//         ": " +
-//         (() => {
-//             if (myIncome === elm.high) {
-//                 return elm.sum();
-//             } else if (myIncome > elm.low && myIncome < elm.high) {
-//                 return (myIncome - elm.low) * elm.tax;
-//             } else if (myIncome < elm.low) {
-//                 return "Income is to low for bracket";
-//             }
-//         })()
-//     );
+// multiplying = (number1, number2) => {
+//     return number1 * number2
 // };
 
-// Second method – Final sum without specific sum for each bracket
-// const allTaxBrackets = [
-//     [198350, 279150, 0.017],
-//     [279150, 642590, 0.04],
-//     [642590, 926800, 0.134],
-//     [926800, 1500000, 0.164],
-//     [1500000, Infinity, 0.174],
-// ];
+// dividing = (number1, number2) => {
+//     return number1 / number2
+// };
 
-// let totalTaxes = 0;
-// for (const brackets of allTaxBrackets) {
-//     if (myIncome < brackets[1]) {
-//         totalTaxes += (myIncome - brackets[0]) * brackets[2];
-//         break;
-//     }
-//     else {
-//         totalTaxes += (brackets[1] - brackets[0]) * brackets[2];
-//     }
-// }
+// console.log(adding(number1, number2));
+// console.log(subtracting(number1, number2));
+// console.log(multiplying(number1, number2));
+// console.log(dividing(number1, number2));
 
-// console.log(totalTaxes);
+
+// -------------------------------------------------------
+// BASIC CALCULATOR 2 – OBJECT WITH METHODS
+
+// let number3 = 8;
+// let number4 = 6;
+
+// const calculations = {
+//     adding(number1, number2) {
+//         return number3 + number4;
+//     },
+
+//     subtracting(number1, number2) {
+//         return number3 - number4;
+//     },
+
+//     multiplying(number1, number2) {
+//         return number3 * number4;
+//     },
+
+//     dividing(number1, number2) {
+//         return number3 / number4;
+//     },
+
+// };
+
+// console.log(calculations.adding(number3, number4));
+// console.log(calculations.subtracting(number3, number4));
+// console.log(calculations.multiplying(number3, number4));
+// console.log(calculations.dividing(number3, number4));
+
+
+// -------------------------------------------------------
+// BASIC CALCULATOR 3 – MULITPLE OPERATIONS IN ONE CALC
+// TBC ...........
+
+// -------------------------------------------------------
+// CALCULATOR FOR NORWEGIAN TAXES AND BENEFITS
+// -------------------------------------------------------
 
 
