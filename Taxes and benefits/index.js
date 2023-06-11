@@ -61,7 +61,7 @@ console.log('Total deductions: ' + totalTaxDeductions);
 const myIncomeAfterTaxDeductions = myIncome - totalTaxDeductions;
 console.log('Income after deductions: ' + myIncomeAfterTaxDeductions);
 
-// Income tax (net income)
+// Income tax (income after deductions)
 const incomeTaxPercent = 0.22;
 incomeTax = () => noDecimals(myIncomeAfterTaxDeductions * incomeTaxPercent); 
 console.log('Income tax: ' + incomeTax());
