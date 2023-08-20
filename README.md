@@ -1,2 +1,2 @@
-# JS-Projects
- Learning to use JS
+# Company Financials
+ Basic JS to calculte salary and taxes
